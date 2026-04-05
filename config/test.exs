@@ -1,10 +1,7 @@
 import Config
 
 config :phoenix_metamodel, PhoenixMetamodel.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "phoenix_metamodel_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: Path.expand("../phoenix_metamodel_test#{System.get_env("MIX_TEST_PARTITION")}.db", __DIR__),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 

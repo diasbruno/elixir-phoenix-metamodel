@@ -1,13 +1,11 @@
 import Config
 
 config :phoenix_metamodel, PhoenixMetamodel.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "phoenix_metamodel_dev",
+  database: Path.expand("../phoenix_metamodel_dev.db", __DIR__),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 5,
+  journal_mode: :wal
 
 config :phoenix_metamodel, PhoenixMetamodelWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4000],
