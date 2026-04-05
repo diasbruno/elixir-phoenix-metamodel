@@ -5,8 +5,8 @@ defmodule PhoenixMetamodel.UserGroups.UserGroup do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "user_groups" do
-    field :user_id, :binary_id
-    field :group_id, :binary_id
+    belongs_to :user, PhoenixMetamodel.Users.User
+    belongs_to :group, PhoenixMetamodel.Groups.Group
   end
 
   def changeset(user_group, attrs) do

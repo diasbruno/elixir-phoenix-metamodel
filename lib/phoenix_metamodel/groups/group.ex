@@ -17,9 +17,5 @@ defmodule PhoenixMetamodel.Groups.Group do
     |> validate_required([:name])
   end
 
-  def update_changeset(group, attrs) do
-    group
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name])
-  end
+
 end

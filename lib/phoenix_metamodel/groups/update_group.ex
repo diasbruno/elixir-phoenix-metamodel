@@ -7,7 +7,7 @@ defmodule PhoenixMetamodel.Groups.UpdateGroup do
     with {:ok, cmd} <- UpdateGroupCommand.validate(params) do
       case Repo.get(Group, cmd.id) do
         nil -> {:error, :not_found}
-        group -> group |> Group.update_changeset(Map.from_struct(cmd)) |> Repo.update()
+        group -> group |> Group.changeset(Map.from_struct(cmd)) |> Repo.update()
       end
     end
   end
