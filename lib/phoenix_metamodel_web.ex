@@ -1,23 +1,19 @@
 defmodule PhoenixMetamodelWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
-  as controllers, components, channels, and so on.
+  as controllers, channels, and so on.
 
   This can be used in your application as:
 
       use PhoenixMetamodelWeb, :controller
-      use PhoenixMetamodelWeb, :html
 
   The definitions below will be executed for every controller,
-  component, etc, so keep them short and clean, focused
-  on imports, uses and aliases.
+  so keep them short and clean, focused on imports, uses and aliases.
 
   Do NOT define functions inside the quoted expressions
   below. Instead, define additional modules and import
   those modules here.
   """
-
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
     quote do
@@ -25,7 +21,6 @@ defmodule PhoenixMetamodelWeb do
 
       import Plug.Conn
       import Phoenix.Controller
-      import Phoenix.LiveView.Router
     end
   end
 
@@ -37,53 +32,10 @@ defmodule PhoenixMetamodelWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: PhoenixMetamodelWeb.Layouts]
+      use Phoenix.Controller, formats: [:json]
 
       import Plug.Conn
       import PhoenixMetamodelWeb.Gettext
-
-      unquote(verified_routes())
-    end
-  end
-
-  def live_view do
-    quote do
-      use Phoenix.LiveView,
-        layout: {PhoenixMetamodelWeb.Layouts, :app}
-
-      unquote(html_helpers())
-    end
-  end
-
-  def live_component do
-    quote do
-      use Phoenix.LiveComponent
-
-      unquote(html_helpers())
-    end
-  end
-
-  def html do
-    quote do
-      use Phoenix.Component
-
-      import Phoenix.Controller,
-        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
-
-      unquote(html_helpers())
-    end
-  end
-
-  defp html_helpers do
-    quote do
-      use Phoenix.HTML
-
-      import PhoenixMetamodelWeb.CoreComponents
-      import PhoenixMetamodelWeb.Gettext
-
-      alias Phoenix.LiveView.JS
 
       unquote(verified_routes())
     end
@@ -94,12 +46,12 @@ defmodule PhoenixMetamodelWeb do
       use Phoenix.VerifiedRoutes,
         endpoint: PhoenixMetamodelWeb.Endpoint,
         router: PhoenixMetamodelWeb.Router,
-        statics: PhoenixMetamodelWeb.static_paths()
+        statics: []
     end
   end
 
   @doc """
-  When used, dispatch to the appropriate controller/view/etc.
+  When used, dispatch to the appropriate controller/etc.
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
