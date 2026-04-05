@@ -1,0 +1,31 @@
+<header class="px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
+    <div class="flex items-center gap-4">
+      <a href="/">
+        <svg viewBox="0 0 71 48" class="h-6" aria-hidden="true">
+          <path
+            d="m26.371 33.477-.552 1.311c-.19.453-.33.846-.33 1.175 0 .395.158.704.475.926.318.222.74.333 1.267.333.617 0 1.157-.08 1.62-.24.463-.16.889-.37 1.278-.635l-.403 1.92c-.317.19-.735.354-1.254.493-.519.14-.977.21-1.374.21-.948 0-1.678-.2-2.19-.6-.511-.4-.767-.967-.767-1.703 0-.406.07-.867.21-1.383.14-.516.278-1.01.414-1.48l1.606-5.558h-1.374l.387-1.74h1.374l.57-2.34h2.054l-.57 2.34h2.054l-.403 1.74h-2.054l-1.59 5.451Z"
+            fill="#FD4F00"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
+      <a href="https://github.com/diasbruno/metamodel" class="hover:text-zinc-700">
+        MetaDsl
+      </a>
+      <a href="https://hexdocs.pm/phoenix/overview.html" class="hover:text-zinc-700">
+        Guides
+      </a>
+      <a href="https://hexdocs.pm/phoenix/Phoenix.html" class="hover:text-zinc-700">
+        API Reference
+      </a>
+    </div>
+  </div>
+</header>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>
